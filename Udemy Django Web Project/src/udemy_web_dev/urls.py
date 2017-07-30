@@ -16,11 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from restaurants.views import home,home2,home3
+from django.views.generic import TemplateView
+
+from restaurants.views import HomeView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home),
-    url(r'^home2/$', home2),
-    url(r'^home3/$', home3),
+    url(r'^$', HomeView.as_view()),
+    url(r'^home2/$', TemplateView.as_view(template_name="home2.html")),
+    url(r'^home3/$', TemplateView.as_view(template_name="home3.html")),
 ]

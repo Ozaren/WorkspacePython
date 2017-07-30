@@ -1,21 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from django.views import View
+from django.views.generic import TemplateView
+
 import random as rand
 
 # Create your views here.
 
-def home(request):
-    num = rand.randint(0, 1000000)
-    context = {"bool": False , "num": num}
-    return render(request, "home1.html" , context)
-
-def home2(request):
-    num = rand.randint(0, 1000000)
-    context = {}
-    return render(request, "home2.html" , context)
-
-def home3(request):
-    num = rand.randint(0, 1000000)
-    context = {}
-    return render(request, "home3.html" , context)
+class HomeView(TemplateView):
+    template_name = "home1.html"
+    
+    def get_context_data(self, **kwargs):
+        num = rand.randint(0, 1000000)
+        context = {"bool": False , "num": num}
+        return context
