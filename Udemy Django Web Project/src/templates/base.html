@@ -5,16 +5,10 @@
 </head>
 
 <body>
-<h1> Hello World </h1>
+<h1> ThreeWorlds.com </h1>
 
-<p>This is {{ bool }} coming through</p>
-<p>
-{% if bool %}
-num is {{ num }}
-{% else %}
-No num to display
-{% endif %}
-</p>
-<body>
+<div class='container'>
+{% block content %} {% endblock content %}
+</div>
 
 </html>

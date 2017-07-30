@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1> Hello World </h1>
+
+<p>This is {{ bool }} coming through</p>
+<p>
+{% if bool %}
+num is {{ num }}
+{% else %}
+No num to display
+{% endif %}
+</p>
+<body>
+
+{% endblock content %}
