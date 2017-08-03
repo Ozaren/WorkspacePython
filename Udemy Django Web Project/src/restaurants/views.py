@@ -2,16 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 
-import random as rand
+from .models import Restaraunt
 
 # Create your views here.
 
-class HomeView(TemplateView):
-    template_name = "home1.html"
+def rest_list(request):
+    queryset = Restaraunt.objects.all()
     
-    def get_context_data(self, **kwargs):
-        num = rand.randint(0, 1000000)
-        context = {"bool": False , "num": num}
-        return context
+    context = {
+        "object_list" : queryset
+    }
+    return render(request , "restaurants/restaurants_list.html" , context)
+
+class RestarauntListView(ListView):
+    template_name = "restaurants/restaurants_list.html"
+    queryset = Restaraunt.objects.all()
+    
+    

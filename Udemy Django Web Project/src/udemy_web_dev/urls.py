@@ -18,11 +18,12 @@ from django.contrib import admin
 
 from django.views.generic import TemplateView
 
-from restaurants.views import HomeView
+from restaurants.views import rest_list, RestarauntListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', HomeView.as_view()),
+    url(r'^$', TemplateView.as_view(template_name="home1.html")),
+    url(r'^restaurants/$', RestarauntListView.as_view()),
     url(r'^home2/$', TemplateView.as_view(template_name="home2.html")),
     url(r'^home3/$', TemplateView.as_view(template_name="home3.html")),
 ]
